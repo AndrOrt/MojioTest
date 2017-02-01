@@ -35,7 +35,6 @@ public class SplashActivity extends AppCompatActivity {
             mojioClient.login("andr-ort@mail.ru", "EpamMojio").enqueue(new Callback<User>() {
                 @Override
                 public void onResponse(Call<User> call, Response<User> response) {
-                    prefManager.createLoginSession();
                     startMainActivity();
                 }
 
