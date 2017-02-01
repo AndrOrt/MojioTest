@@ -39,6 +39,8 @@ dependencies {
     final def gsonVersion = '2.8.0'
     final def constraintLayoutVersion = '1.0.0-beta4'
     final def mojioVersion = '0.0.133'
+    final def moxyVersion = '1.4.5'
+    final def materialDialogsVersion = '0.9.0.2'
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -60,5 +62,15 @@ dependencies {
     //Mojio
     compile "io.moj.java:mojio-sdk-rest:$mojioVersion"
     compile 'com.android.support:support-v4:25.1.1'
+
+    //Moxy
+    compile "com.arello-mobile:moxy:$moxyVersion"
+    annotationProcessor "com.arello-mobile:moxy-compiler:$moxyVersion"
+    compile "com.arello-mobile:moxy-android:$moxyVersion"
+    compile "com.arello-mobile:moxy-app-compat:$moxyVersion"
+
+    //Material Dialogs
+    compile "com.afollestad.material-dialogs:core:$materialDialogsVersion"
+    
     testCompile 'junit:junit:4.12'
 }

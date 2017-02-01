@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.example.mojiotest.R;
 import com.example.mojiotest.tools.PrefManager;
 
 import io.moj.java.sdk.MojioClient;
@@ -13,10 +14,6 @@ import io.moj.java.sdk.model.User;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-/**
- * Created by Andrei_Ortyashov on 2/1/2017.
- */
 
 public class SplashActivity extends AppCompatActivity {
     public PrefManager prefManager;
@@ -31,6 +28,7 @@ public class SplashActivity extends AppCompatActivity {
         if (isLogin) {
             startMainActivity();
         } else {
+            //TODO start LoginActivity
             // startActivity(new Intent(this, LoginActivity.class));
 
             final MojioClient mojioClient = ((App) getApplicationContext()).getMojioClient();
@@ -43,9 +41,15 @@ public class SplashActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(Call<User> call, Throwable t) {
                     Toast.makeText(getApplicationContext(), "Error Login", Toast.LENGTH_SHORT).show();
+                    finishWithAnimation();
                 }
             });
         }
+    }
+
+    private void finishWithAnimation() {
+        finish();
+        overridePendingTransition(R.anim.animation_enter, R.anim.animation_leave);
     }
 
     private void startMainActivity() {
