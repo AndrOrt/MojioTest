@@ -3,16 +3,12 @@ package com.example.mojiotest.tools;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-/**
- * Created by Andrei_Ortyashov on 2/1/2017.
- */
-
 public class PrefManager {
     private final SharedPreferences sharedPreferences;
     private final SharedPreferences.Editor editor;
 
-    public static final String PREFS_NAME = "Mojio_Test_Pref";
-    public static final String IS_LOGIN = "IS_LOGIN";
+    private static final String PREFS_NAME = "Mojio_Test_Pref";
+    private static final String IS_LOGIN = "IS_LOGIN";
 
     private Context context;
 

@@ -1,6 +1,5 @@
 package com.example.mojiotest.ui.trips;
 
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,9 +19,9 @@ import io.moj.java.sdk.model.values.Location;
 /**
  * Created by Andrei_Ortyashov on 2/1/2017.
  */
-public class TripViewAdapter extends RecyclerView.Adapter<TripViewAdapter.ViewHolder> {
+class TripViewAdapter extends RecyclerView.Adapter<TripViewAdapter.ViewHolder> {
     private List<Trip> list;
-    TripListFragment.OnTripClickListener mListener;
+   private TripListFragment.OnTripClickListener mListener;
     private final static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("HH:mm dd MMM yyyy");
 
     public TripViewAdapter(TripListFragment.OnTripClickListener mListener) {
@@ -58,7 +57,6 @@ public class TripViewAdapter extends RecyclerView.Adapter<TripViewAdapter.ViewHo
         public final View mView;
 
         Trip trip;
-        CardView cardView;
 
         TextView tvCreatedOn;
         TextView tvStartAddress;
@@ -67,7 +65,6 @@ public class TripViewAdapter extends RecyclerView.Adapter<TripViewAdapter.ViewHo
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            cardView = (CardView) view.findViewById(R.id.cardView);
             tvCreatedOn = (TextView) view.findViewById(R.id.tvCreatedOn);
             tvStartAddress = (TextView) view.findViewById(R.id.tvStartAddress);
             tvEndAddress = (TextView) view.findViewById(R.id.tvEndAddress);

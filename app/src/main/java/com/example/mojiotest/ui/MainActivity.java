@@ -3,58 +3,60 @@ package com.example.mojiotest.ui;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
 import com.example.mojiotest.R;
+import com.example.mojiotest.ui.trip.TripFragment;
 import com.example.mojiotest.ui.trips.TripListFragment;
-
-import io.moj.java.sdk.MojioClient;
 
 /**
  * Created by Andrei_Ortyashov on 2/1/2017.
  */
-public class MainActivity extends AppCompatActivity implements TripListFragment.OnTripClickListener {
-
-    App app;
-    FragmentManager fragmentManager;
+public class MainActivity extends AppCompatActivity implements
+        FragmentManager.OnBackStackChangedListener,
+        TripListFragment.OnTripClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        app = ((App) getApplicationContext());
-        final MojioClient mojioClient = app.getMojioClient();
-
-        fragmentManager = getSupportFragmentManager();
-
-/*        mojioClient.login("andr-ort@mail.ru", "EpamMojio").enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                Toast.makeText(getApplicationContext(), response.body().getUserName(), Toast.LENGTH_SHORT).show();
-                showTrips();
-            }
-
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Error Login", Toast.LENGTH_SHORT).show();
-            }
-        });*/
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         if (savedInstanceState == null) {
-            showTrips();
+            TripListFragment fragment = new TripListFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.content, fragment, TripListFragment.class.getSimpleName())
+                    .commit();
         }
+
+        getSupportFragmentManager().addOnBackStackChangedListener(this);
+        shouldDisplayHomeUp();
     }
 
-    private void showTrips() {
-        TripListFragment fragment = new TripListFragment();
-        fragmentManager.beginTransaction()
-                .add(R.id.content, fragment, TripListFragment.class.getSimpleName())
-                .commit();
+    private void shouldDisplayHomeUp() {
+        boolean canback = getSupportFragmentManager().getBackStackEntryCount() >= 1;
+        getSupportActionBar().setDisplayHomeAsUpEnabled(canback);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        getSupportFragmentManager().popBackStack();
+        return true;
     }
 
     @Override
     public void viewTrip(String tripId) {
-        Toast.makeText(getApplicationContext(), tripId, Toast.LENGTH_SHORT).show();
+        TripFragment fragment = TripFragment.newInstance(tripId);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content, fragment, TripFragment.class.getSimpleName())
+                .addToBackStack(TripFragment.class.getSimpleName())
+                .commit();
+    }
+
+    @Override
+    public void onBackStackChanged() {
+        shouldDisplayHomeUp();
     }
 }

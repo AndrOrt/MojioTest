@@ -45,7 +45,11 @@ public class TripListFragment extends Fragment {
 
         App app = (App) getActivity().getApplicationContext();
         mojioClient = app.getMojioClient();
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
         loadTrips();
     }
 
@@ -66,8 +70,7 @@ public class TripListFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.swipe_recycle_view, container, false);
-        return view;
+        return inflater.inflate(R.layout.swipe_recycle_view, container, false);
     }
 
     @Override
@@ -91,6 +94,7 @@ public class TripListFragment extends Fragment {
         adapter = new TripViewAdapter(mListener);
         recyclerView.setAdapter(adapter);
 
+        getActivity().setTitle(R.string.trips);
     }
 
     @Override
