@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 25
@@ -11,6 +12,10 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -18,6 +23,16 @@ android {
         }
     }
 }
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'me.tatarka:gradle-retrolambda:' + rootProject.ext.retrolambdaVersion
+    }
+}
+
 
 dependencies {
     final def androidSupportLibraryVersion = '25.1.1'
@@ -29,7 +44,6 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testCompile 'junit:junit:4.12'
 
     // Support library
     compile "com.android.support:appcompat-v7:$androidSupportLibraryVersion"
@@ -45,4 +59,6 @@ dependencies {
 
     //Mojio
     compile "io.moj.java:mojio-sdk-rest:$mojioVersion"
+    compile 'com.android.support:support-v4:25.1.1'
+    testCompile 'junit:junit:4.12'
 }

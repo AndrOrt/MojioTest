@@ -1,7 +1,8 @@
-package com.example.mojiotest;
+package com.example.mojiotest.ui;
 
 import android.app.Application;
 
+import com.example.mojiotest.BuildConfig;
 import com.google.gson.Gson;
 
 import io.moj.java.sdk.MojioClient;
