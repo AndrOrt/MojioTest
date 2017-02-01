@@ -17,82 +17,81 @@
             android:id="@+id/imageViewCreatedOn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_time"
             android:layout_marginStart="16dp"
-            app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_time" />
 
         <TextView
             android:id="@+id/tvCreatedOn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:layout_marginStart="8dp"
-            android:text="CreateOn"
+            android:text="@string/create_on"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="14dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageViewCreatedOn"
             app:layout_constraintLeft_toRightOf="@+id/imageViewCreatedOn"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageViewCreatedOn"
-            android:layout_marginEnd="16dp" />
+            app:layout_constraintTop_toTopOf="@+id/imageViewCreatedOn" />
 
         <ImageView
             android:id="@+id/imageViewStartAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            app:srcCompat="@drawable/ic_address_start"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewCreatedOn"
             android:layout_marginStart="16dp"
-            app:layout_constraintLeft_toLeftOf="parent" />
+            android:layout_marginTop="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewCreatedOn"
+            app:srcCompat="@drawable/ic_address_start" />
 
         <TextView
             android:id="@+id/tvStartAddress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:layout_marginStart="8dp"
-            android:text="StartAddress"
+            android:text="@string/start_address"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="14dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageViewStartAddress"
             app:layout_constraintLeft_toRightOf="@+id/imageViewStartAddress"
-            app:layout_constraintTop_toTopOf="@+id/imageViewStartAddress"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginEnd="16dp" />
+            app:layout_constraintTop_toTopOf="@+id/imageViewStartAddress" />
 
         <ImageView
             android:id="@+id/imageViewEndAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageViewStartAddress"
-            app:srcCompat="@drawable/ic_address_end"
-            android:layout_marginStart="16dp" />
+            app:srcCompat="@drawable/ic_address_end" />
 
         <TextView
             android:id="@+id/tvEndAddress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:layout_marginStart="8dp"
-            android:text="EndAddress"
+            android:text="@string/end_address"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="14dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageViewEndAddress"
             app:layout_constraintLeft_toRightOf="@+id/imageViewEndAddress"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageViewEndAddress"
-            android:layout_marginEnd="16dp" />
+            app:layout_constraintTop_toTopOf="@+id/imageViewEndAddress" />
 
         <View
             android:id="@+id/divider"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:background="@android:color/holo_green_light"
+            android:background="@color/colorPrimaryDark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintLeft_toLeftOf="parent"
